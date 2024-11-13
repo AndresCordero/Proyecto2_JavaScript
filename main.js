@@ -16,22 +16,84 @@ const productos = [
         { id: 14, nombre: "Café Latte", precio: 3.00, categoria: "Bebida", disponibilidad: true },
 ];
 
-function menuPrincipal() {
-        let opcionInicial = prompt("Bienvenido a nuetra cafeteria! que desea ordenar hoy? \nLe afrecemos: \n 1 - Bebidas \n 2 - Panaderia \n 3 - Comida \n \n Seleccione una de las opciones anteriores")
-        return opcionInicial
-}
-let categoriaIngresada = Number(menuPrincipal())
+let seleccionInicial = pedirNumero("Ingrese:\n1 - Agregar al carrito.\n2 - Filtrar por categoria.\n3 - Finalizar compra.\n0 - Salir.");
+let mensajeCategorias = obtenerCategorias(productos).join("\n");
+let carrito = [];
 
-if (categoriaIngresada === 1) {
-        let productosPorCategorias = productos.filter(producto => producto.categoria === "Bebida")
-        console.log(productosPorCategorias)
-} else if (categoriaIngresada === 2) {
-        let productosPorCategorias = productos.filter(producto => producto.categoria === "Panaderia")
-        console.log(productosPorCategorias)
-} else if (categoriaIngresada === 3) {
-        let productosPorCategorias = productos.filter(producto => producto.categoria === "Comida")
-        console.log(productosPorCategorias)
-} else alert("Ingrese un valor valido")
+while (seleccionInicial !== 0) {
+        if (seleccionInicial === 1) {
+                let idProducto = pedirNumero("Seleccione el numero del producto que desea agregar al carrito:\n" + listarProductos(productos));
+                carrito = agregarAlCarrito(carrito, productos, idProducto);
+        } else if (seleccionInicial === 2) {
+                let categoria = prompt("Escriba la categoria para ver los productos disponibles:\n" + mensajeCategorias).toLowerCase();
+                let productosFiltrados = filtrarProductos(productos, "categoria", categoria);
+                console.log(productosFiltrados);
+                if (productosFiltrados.length > 0) {
+                        let idProducto = pedirNumero("Seleccione un producto:\n" + listarProductos(productosFiltrados));
+                        carrito = agregarAlCarrito(carrito, productosFiltrados, idProducto);
+                } else {
+                        alert("No se encontraron productos en esta categoría.");
+                }
+        } else if (seleccionInicial === 3) {
+                let total = carrito.reduce((acumulador, producto) => acumulador + producto.subtotal, 0);
+                alert("El total de su compra es: $" + total);
+                seleccionInicial === 0;
+        } else {
+                alert("Por favor, seleccione una de la sopciones disponibles");
+        }
+        seleccionInicial = pedirNumero("Ingrese:\n1 - Agregar al carrito\n2 - Filtrar por categoría\n3 - Finalizar compra\n0 - Salir.");
+}
+
+iniciarCompra();
+function pedirNumero(mensaje) {
+        return Number(prompt(mensaje));
+}
+
+function listarProductos(lista) {
+        return lista.map(producto => producto.id + " - " + producto.nombre + " - $" + producto.precio).join("\n");
+}
+
+function agregarAlCarrito(carrito, productos, idProducto) {
+        let productoSeleccionado = productos.find(producto => producto.id === idProducto);
+        if (!productoSeleccionado) {
+                alert("Producto no encontrado.");
+                return carrito;
+        }
+
+        let indiceProductoSeleccionado = carrito.findIndex(producto => producto.id === idProducto);
+        if (indiceProductoSeleccionado !== -1) {
+                carrito[indiceProductoSeleccionado].unidades++;
+                carrito[indiceProductoSeleccionado].subtotal = carrito[indiceProductoSeleccionado].precio * carrito[indiceProductoSeleccionado].unidades;
+        } else {
+                carrito.push({
+                        id: productoSeleccionado.id,
+                        nombre: productoSeleccionado.nombre,
+                        precio: productoSeleccionado.precio,
+                        unidades: 1,
+                        subtotal: productoSeleccionado.precio
+                });
+        }
+        console.log(carrito);
+        return carrito;
+}
+
+function obtenerCategorias(productos) {
+        let categorias = [];
+        productos.forEach(producto => {
+                if (!categorias.includes(producto.categoria)) {
+                        categorias.push(producto.categoria);
+                }
+        });
+        return categorias;
+}
+
+function filtrarProductos(productos, nombrePropiedad, valorPropiedad) {
+        return productos.filter(producto => producto[nombrePropiedad].toLowerCase() === valorPropiedad);
+}
+
+
+/* let idSelector = productosPorCategorias.find(producto => productosPorCategorias.id === 2)
+console.log(idSelector) */
 
 
 
