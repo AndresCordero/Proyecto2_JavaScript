@@ -3,7 +3,7 @@ const productos = [
         { id: 1, nombre: "Té Verde", precio: 2.00, categoria: "Bebida", disponibilidad: true },
         { id: 2, nombre: "Croissant", precio: 1.50, categoria: "Panaderia", disponibilidad: true },
         { id: 3, nombre: "Muffin de Chocolate", precio: 2.00, categoria: "Panaderia", disponibilidad: true },
-        { id: 4, nombre: "Sándwich de Jamón y Quesoo", precio: 2.50, categoria: "Comida", disponibilidad: true },
+        { id: 4, nombre: "Sándwich de Jamón y Queso", precio: 2.50, categoria: "Comida", disponibilidad: true },
         { id: 5, nombre: "Ensalada César", precio: 4.00, categoria: "Comida", disponibilidad: true },
         { id: 6, nombre: "Smoothie de Frutas", precio: 2.50, categoria: "Bebida", disponibilidad: true },
         { id: 7, nombre: "Espresso", precio: 2.00, categoria: "Bebida", disponibilidad: true },
@@ -22,8 +22,22 @@ function menuPrincipal() {
 }
 let categoriaIngresada = Number(menuPrincipal())
 
-
 if (categoriaIngresada === 1) {
+        let productosPorCategorias = productos.filter(producto => producto.categoria === "Bebida")
+        console.log(productosPorCategorias)
+} else if (categoriaIngresada === 2) {
+        let productosPorCategorias = productos.filter(producto => producto.categoria === "Panaderia")
+        console.log(productosPorCategorias)
+} else if (categoriaIngresada === 3) {
+        let productosPorCategorias = productos.filter(producto => producto.categoria === "Comida")
+        console.log(productosPorCategorias)
+} else alert("Ingrese un valor valido")
+
+
+
+
+
+/* if (categoriaIngresada === 1) {
         productos.forEach((producto) => {
                 if (producto.categoria == "Bebida") {
                         console.log(producto.nombre)
@@ -42,10 +56,7 @@ if (categoriaIngresada === 1) {
                 }
         })
 }
-
-
-
-
+ */
 
 
 
