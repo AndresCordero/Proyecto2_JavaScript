@@ -167,3 +167,6 @@ for (const objeto of objetos) {
 }
 
 
+
+
+
