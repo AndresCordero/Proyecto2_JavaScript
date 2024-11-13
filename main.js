@@ -1,45 +1,84 @@
 
-
-/* const productos = [
-        {id: 1, nombre: "Té Verde", precio: 2.00, categoria: "Bebida", disponibilidad: true},
-        {id: 2, nombre: "Croissant", precio: 1.50, categoria: "Panaderia", disponibilidad: true},
-        {id: 3, nombre: "Muffin de Chocolate", precio: 2.00, categoria: "Panaderia", disponibilidad: true},
-        {id: 4, nombre: "Sándwich de Jamón y Quesoo", precio: 2.50, categoria: "Comida", disponibilidad: true},
-        {id: 5, nombre: "Ensalada César", precio: 4.00, categoria: "Comida", disponibilidad: true},
-        {id: 6, nombre: "Smoothie de Frutas", precio: 2.50, categoria: "Bebida", disponibilidad: true},
-        {id: 7, nombre: "Espresso", precio: 2.00, categoria: "Bebida", disponibilidad: true},
-        {id: 8, nombre: "Donas", precio: 2.50, categoria: "Panaderia", disponibilidad: true},
-        {id: 9, nombre: "Galletas", precio: 1.50, categoria: "Panaderia", disponibilidad: true},
-        {id: 10, nombre: "Quesadilla", precio: 4.50, categoria: "Comida", disponibilidad: true},
-        {id: 11, nombre: "Empanadas", precio: 2.50, categoria: "Comida", disponibilidad: true},
-        {id: 12, nombre: "Pasta", precio: 4.50, categoria: "Comida", disponibilidad: true},
-        {id: 13, nombre: "Café Americano", precio: 2.50, categoria: "Bebida", disponibilidad: true},
-        {id: 14, nombre: "Café Latte", precio: 3.00, categoria: "Bebida", disponibilidad: true},
+const productos = [
+        { id: 1, nombre: "Té Verde", precio: 2.00, categoria: "Bebida", disponibilidad: true },
+        { id: 2, nombre: "Croissant", precio: 1.50, categoria: "Panaderia", disponibilidad: true },
+        { id: 3, nombre: "Muffin de Chocolate", precio: 2.00, categoria: "Panaderia", disponibilidad: true },
+        { id: 4, nombre: "Sándwich de Jamón y Quesoo", precio: 2.50, categoria: "Comida", disponibilidad: true },
+        { id: 5, nombre: "Ensalada César", precio: 4.00, categoria: "Comida", disponibilidad: true },
+        { id: 6, nombre: "Smoothie de Frutas", precio: 2.50, categoria: "Bebida", disponibilidad: true },
+        { id: 7, nombre: "Espresso", precio: 2.00, categoria: "Bebida", disponibilidad: true },
+        { id: 8, nombre: "Donas", precio: 2.50, categoria: "Panaderia", disponibilidad: true },
+        { id: 9, nombre: "Galletas", precio: 1.50, categoria: "Panaderia", disponibilidad: true },
+        { id: 10, nombre: "Quesadilla", precio: 4.50, categoria: "Comida", disponibilidad: true },
+        { id: 11, nombre: "Empanadas", precio: 2.50, categoria: "Comida", disponibilidad: true },
+        { id: 12, nombre: "Pasta", precio: 4.50, categoria: "Comida", disponibilidad: true },
+        { id: 13, nombre: "Café Americano", precio: 2.50, categoria: "Bebida", disponibilidad: true },
+        { id: 14, nombre: "Café Latte", precio: 3.00, categoria: "Bebida", disponibilidad: true },
 ];
 
-function menuPrincipal(){
-let opcionInicial = prompt("Bienvenido a nuetra cafeteria! que desea ordenar hoy? \nLe afrecemos: \n 1 - Bebidas \n 2 - Panaderia \n 3 - Comida \n \n Seleccione una de las opciones anteriores")
+function menuPrincipal() {
+        let opcionInicial = prompt("Bienvenido a nuetra cafeteria! que desea ordenar hoy? \nLe afrecemos: \n 1 - Bebidas \n 2 - Panaderia \n 3 - Comida \n \n Seleccione una de las opciones anteriores")
         return opcionInicial
 }
-
-let categoriaIngresada = menuPrincipal() 
- */
+let categoriaIngresada = Number(menuPrincipal())
 
 
-/* const producto = {
-        nombre: "sombrero", precio: 5000
-
+if (categoriaIngresada === 1) {
+        productos.forEach((producto) => {
+                if (producto.categoria == "Bebida") {
+                        console.log(producto.nombre)
+                }
+        })
+} else if (categoriaIngresada === 2) {
+        productos.forEach((producto) => {
+                if (producto.categoria == "Panaderia") {
+                        console.log(producto.nombre)
+                }
+        })
+} else if (categoriaIngresada === 3) {
+        productos.forEach((producto) => {
+                if (producto.categoria == "Comida") {
+                        console.log(producto.nombre)
+                }
+        })
 }
 
-producto["nombre"]
-producto["precio"]
 
-function mostrarVariable(algo1, algo2) {
-        alert(algo1[algo2])
-}
 
-mostrarVariable(producto, "nombre")
-mostrarVariable(producto, "precio") */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------------------------------Clases------------------------------------- */
 
@@ -103,6 +142,8 @@ console.log(articulos) */
 
 
 
+
+
 /* ---------------------------  IndexOf ------------------------------ */
 
 /* let articulos = ["Pan", "cafe", "helado", "Sandwitch", "Expresso"]
@@ -144,13 +185,13 @@ do {
 
 /* ----------------------------Array de Objetos --------------------------- */
 
-let opcion = 1
+/* let opcion = 1
 const objetos = [
         { id: 1, nombre: "Té Verde", precio: 2.00, categoria: "Bebida"},
         { id: 2, nombre: "Croissant", precio: 1.50, categoria: "Panaderia"},
         { id: 3, nombre: "Muffin de Chocolate", precio: 2.00, categoria: "Panaderia"},
 ]
-
+ */
 
 /* 
 for (let i = 0; i < objetos.length; i++) {
@@ -159,14 +200,10 @@ for (let i = 0; i < objetos.length; i++) {
         console.log(objetos[i].categoria)
 } */
 
-
+/* 
 for (const objeto of objetos) {
         console.log(objeto.nombre)
         console.log(objeto.precio)
         console.log(objeto.categoria)
-}
-
-
-
-
+} */
 
