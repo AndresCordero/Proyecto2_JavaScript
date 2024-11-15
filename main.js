@@ -55,25 +55,29 @@ while (opcionInicial !== 0) {
                 } else if (opcionCategoria === 0) {
                         opcionInicial = pedirNumero("Ingrese:\n1 - Para ver el menu por categoria\n2 - Para realizar su pedido\n3 - para finalizar y pagar\n0 - para salir")
                 }
-
+        
                 /*********** Para agregar al carrito ************/
 
         } else if (opcionInicial === 2) {
 
-                let idProducto
-                do {
-                        idProducto = pedirNumero("Seleccione un producto por ID o '0' para salir\n0 - SALIR\n" + listaDeProductos(productos))
-                        carrito = actualizarCarrito(carrito, productos, idProducto)
-                } while (idProducto !== 0)
-                break;
+                
+                let idProducto  
+                let opcionAgregar = 1
+
+                while (opcionAgregar === 1) { 
+                idProducto = pedirNumero("Seleccione un producto por ID o '0' para salir\n0 - SALIR\n" + listaDeProductos(productos))
+                carrito = actualizarCarrito(carrito, productos, idProducto)
+                opcionAgregar = pedirNumero("Desea agregar otro elemento?\n1 - Si\n0 - No")
+                } 
+                
 
                 /*********** Mostrar Carrito ************/
 
         } else if (opcionInicial === 3) {
                 alert((carrito.map(producto => "$" + producto.precio + (" - ") + producto.nombre).join("\n")))
-                break;
+                
         }
-
+        opcionInicial = pedirNumero("Ingrese:\n1 - Para ver el menu por categoria\n2 - Para realizar su pedido\n3 - para finalizar y pagar\n0 - para salir")
 }
 
 /****************** Funciones *********************/
@@ -105,11 +109,11 @@ function actualizarCarrito(carrito, productos, idProducto) {
 
         let productoBuscado = productos.find(producto => producto.id === idProducto)
         let indiceProductoBuscado = carrito.findIndex(producto => producto.id === idProducto)
-        if (indiceProductoBuscado !== -1) {
-                carrito[indiceProductoBuscado].unidades++
-                carrito[indiceProductoBuscado].subtotal = carrito[indiceProductoBuscado].precioUnitario * carrito[indiceProductoBuscado].unidades
-        } else {
-        }
+        /*  if (indiceProductoBuscado !== -1) {
+                 carrito[indiceProductoBuscado].unidades++
+                 carrito[indiceProductoBuscado].subtotal = carrito[indiceProductoBuscado].precioUnitario * carrito[indiceProductoBuscado].unidades
+         } else {
+         } */
 
         carrito.push({
                 nombre: productoBuscado.nombre,
@@ -120,5 +124,3 @@ function actualizarCarrito(carrito, productos, idProducto) {
         console.log(carrito)
         return carrito
 }
-
-
